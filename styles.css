@@ -1,0 +1,196 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    touch-action: manipulation;
+}
+
+#background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('Graphics/background.png');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+#game-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+.balloon {
+    position: absolute;
+    width: 60px;
+    height: 80px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    display: block;
+    transform: translate(-50%, -50%);
+}
+
+.balloon.red { background-color: #FF5252; }
+.balloon.orange { background-color: #FF9800; }
+.balloon.yellow { background-color: #FFEB3B; }
+.balloon.green { background-color: #4CAF50; }
+.balloon.blue { background-color: #2196F3; }
+.balloon.purple { background-color: #9C27B0; }
+.balloon.pink { background-color: #E91E63; }
+.balloon.cyan { background-color: #00BCD4; }
+
+.balloon:before {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 20px;
+    background-color: #FFD700;
+    border-radius: 0 0 5px 5px;
+}
+
+.balloon:after {
+    content: "";
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 30px;
+    background-color: #333;
+}
+
+.balloon-letter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    z-index: 11;
+}
+
+.balloon.yellow .balloon-letter,
+.balloon.cyan .balloon-letter {
+    color: #333;
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+}
+
+#pump {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 200px;
+    cursor: pointer;
+    z-index: 20;
+}
+
+#pump-pipe {
+    position: absolute;
+    bottom: 25%;
+    left: 70%;
+    transform: translateX(-50%);
+    width: 120px;
+    z-index: 22;
+}
+
+#pump-cylinder {
+    position: absolute;
+    bottom: 41px;
+    left: 108%;
+    transform: translateX(-50%);
+    width: 80px;
+    z-index: 21;
+}
+
+#pump-handle {
+    position: absolute;
+    bottom: 104px;
+    left: 108%;
+    transform: translateX(-50%);
+    width: 30px;
+    z-index: 23;
+    transition: transform 0.1s;
+}
+
+#pump:active #pump-handle {
+    transform: translateX(-50%) translateY(30px);
+}
+
+#pump img {
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+}
+
+#instructions {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 80%;
+    z-index: 20;
+}
+
+.pop-effect {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: pop 0.5s forwards;
+    z-index: 15;
+}
+
+@keyframes pop {
+    0% { transform: scale(0); opacity: 1; }
+    100% { transform: scale(1.5); opacity: 0; }
+}
+
+#balloon-count {
+    position: absolute;
+    top: 135px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 16px;
+    z-index: 20;
+}
+
+.inflate-animation {
+    animation: inflate 0.5s forwards;
+}
+
+@keyframes inflate {
+    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+.balloon-string {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 30px;
+    background-color: #333;
+    z-index: 9;
+}
